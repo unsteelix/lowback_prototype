@@ -1,0 +1,20 @@
+{
+  "name": "lowback",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "watch": "babel src --out-dir lib --extensions '.ts' --watch",
+    "build": "babel src --out-dir lib --extensions '.ts'"
+  },
+  "repository": "https://github.com/unsteelix/lowback.git",
+  "license": "MIT",
+  "dependencies": {
+    "typescript": "^4.4.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.15.4",
+    "@babel/core": "^7.15.5",
+    "@babel/preset-env": "^7.15.6",
+    "@babel/preset-typescript": "^7.15.0"
+  }
+}
