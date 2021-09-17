@@ -1,0 +1,38 @@
+GET http://localhost:3000/ HTTP/1.1
+
+###
+
+GET http://localhost:3000/db/test3/eee/e2/2 HTTP/1.1
+
+###
+
+GET http://localhost:3000/db/query/test2 HTTP/1.1
+
+###
+
+GET http://localhost:3000/db/reload HTTP/1.1
+
+###
+
+POST http://localhost:3000/db/set/test3/eee/e2/2 HTTP/1.1
+content-type: application/json
+
+{
+    "22": "4222",
+    "eee": 44
+}
+
+###
+
+POST http://localhost:3000/db/merge/test3/eee HTTP/1.1
+content-type: application/json
+
+{
+    "ddd": "tessss",
+    "ggg": 454
+}
+
+###
+
+GET http://localhost:3000/db/delete/test3/eee/ddd HTTP/1.1
+content-type: application/json

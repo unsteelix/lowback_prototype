@@ -1,42 +1,129 @@
+import Fastify from 'fastify';
+import JMESPath from 'jmespath';
+
+import router from './router'
+import DB from './db';
 
 
-import { JsonDB } from 'node-json-db';
-import { Config } from 'node-json-db/dist/lib/JsonDBConfig'
+/**
+ * [GET]  /auth/unsteelix/12345678                   - запрос на получение токена аутентификации
+ * [GET]  /db/site/...                               - запрос на получение данных
+ * [GET]  /db/query/site/gallery/card[id=10]         - запрос по правилу
+ * [POST] /db/set                                    - запрос на вставку с заменой
+ * [POST] /db/merge                                  - запрос на изменение (добавление без удаления существующего)
+ * [POST] /db/push                                   - запрос на добавление в массив
+ * [POST] /db/delete                                 - Запрос на удаление
+ * 
+ * [GET]  /                                          - основная страница со стенографической картикой и формой входа
+ * [GET]  /admin/adminpass                           - админка
+ * 
+ * */
 
-// The first argument is the database filename. If no extension, '.json' is assumed and automatically added.
-// The second argument is used to tell the DB to save after each push
-// If you put false, you'll have to call the save() method.
-// The third argument is to ask JsonDB to save the database in an human readable format. (default false)
-// The last argument is the separator. By default it's slash (/)
-var db = new JsonDB(new Config("./database/db.json", true, true, '/'));
-
-//db.delete("/");
-
-//db.reload();
-
-
-// Pushing the data into the database
-// With the wanted DataPath
-// By default the push will override the old value
-db.push("/test1","super test");
+const PORT = 3000
 
 
-// It also create automatically the hierarchy when pushing new data for a DataPath that doesn't exists
-db.push("/test2/my/test",5);
+const fastify = Fastify({
+    logger: true
+})
 
-// You can also push directly objects
-db.push("/test3", {test:"test", json: {test:["test"]}});
+fastify.register(router)
 
-// If you don't want to override the data but to merge them
-// The merge is recursive and work with Object and Array.
-db.push("/test3", {
-    new:"cool",
-    json: {
-        important : 5
+const start = async () => {
+    try {
+        await fastify.listen(PORT)
+        console.log(`Server is now listening on port ${PORT}`)
+    } catch (err) {
+        fastify.log.error(err)
+        process.exit(1)
     }
-}, false);
+}
+start()
 
-var data = db.getData("/");
 
 
-console.log('3333', data)
+/*
+router
+    .get('/', (ctx) => {
+        const data = DB.get('/');
+        console.log('\n\nGET\n\n', data, 'Welcome !!!');
+    })
+    .get('/db/query/(.*)', (ctx) => {
+        const { url } = ctx.request;
+        const query = url.slice(10);
+
+        // чистим запрос и переводим в нужный синтаксис
+        let cleanQuery = query.trim();
+        const lastSymbol = cleanQuery.slice(-1);
+
+        // убираем последний "/", если таковой присутствует
+        if (lastSymbol === '/') {
+            cleanQuery = cleanQuery.slice(0, -2);
+        }
+
+        // заменяем слэши на точки
+        cleanQuery = cleanQuery.replaceAll('/', '.');
+
+        const data = DB.get('/');
+        
+        const res = JMESPath.search(data, cleanQuery);
+        ctx.body = res;
+    })
+    .post('/db/set/(.*)', (ctx) => {
+        const { url } = ctx.request;
+        const dataPath = url.slice(7);
+
+        const post = ctx.request.body;
+
+        const res = DB.set(dataPath, post);
+        ctx.body = res;
+    })
+
+    .post('/db/merge/(.*)', (ctx) => {
+        const { url } = ctx.request;
+        const dataPath = url.slice(9);
+
+        const post = ctx.request.body;
+
+        const res = DB.merge(dataPath, post, false);
+        ctx.body = res;
+    })
+
+    .get('/db/delete/(.*)', (ctx) => {
+        const { url } = ctx.request;
+        const dataPath = url.slice(10);
+
+        DB.delete(dataPath);
+        ctx.body = 'successfully deleted';
+    })
+
+    .get('/db/reload', (ctx) => {
+        DB.reload();
+        ctx.body = 'successfully reload';
+    })
+
+    .get('/auth/:login/:pass', (ctx) => {
+        const { login, pass } = ctx.params;
+        const token = DB.get(`/token/${login}/${pass}`);
+        ctx.body = token;
+    })
+
+    .get('/', (ctx) => {
+
+    })
+
+    .get('/db/(.*)', (ctx) => {
+        const { url } = ctx.request;
+        const dataPath = url.slice(3);
+        const data = DB.get(dataPath);
+        ctx.body = data;
+    })
+
+app.use(router.routes());
+
+app.on('error', err => {
+    console.error('server error', err);
+});
+
+app.listen(4000);
+console.log('Server is running on port 4000');
+*/
