@@ -61,21 +61,27 @@ const router = async (fastify) => {
         return 'successfully deleted';
     })
 
-    fastify.get('/db/reload', async () => {
+    fastify.get('/db/reload', () => {
         DB.reload();
         return 'successfully reload';
     })
 
-    fastify.get('/auth/:login/:pass', async (request) => {
-        const { params } = request;
-        const { login, pass } = params;
-
-        return DB.get(`/token/${login}/${pass}`);
-    })
-
-    fastify.get('/db/*', async (request) => {
+    fastify.get('/db/*', (request) => {
         const { params } = request;
         const dataPath = `/${params['*']}`;
+
+        return DB.get(dataPath);
+    })
+
+    fastify.get('/auth/:site/:pass', async (request) => {
+        const { params } = request;
+        const { site, pass } = params;
+
+        if (!site || !pass) {
+            throw new Error('password must be NOT VOID');
+        }
+
+        const dataPath = `/auth/${site}/${pass}`;
 
         return DB.get(dataPath);
     })
