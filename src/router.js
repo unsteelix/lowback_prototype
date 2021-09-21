@@ -5,9 +5,7 @@ import JMESPath from 'jmespath';
 
 const router = async (fastify) => {
 
-    fastify.get('/', async () => {
-        return DB.get('/');
-    })
+    fastify.get('/', (req, reply) => reply.sendFile('auth.html'))
 
     /**
      * Не работают пути ( /fsdf/3334 ) с ключами начинающимися с типа Number, например 
@@ -84,6 +82,10 @@ const router = async (fastify) => {
         const dataPath = `/auth/${site}/${pass}`;
 
         return DB.get(dataPath);
+    })
+
+    fastify.get('/admin', (req, reply) => {
+        reply.sendFile('admin.html')
     })
 
 }

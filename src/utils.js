@@ -24,4 +24,11 @@ const removeUrlPathPrefix = (url) => {
     return cleanUrl
 }
 
-export { removeUrlPathPrefix };
+const getCookie = (rawCookieStr, name) => {
+    let matches = rawCookieStr.match(new RegExp(
+      "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+    ));
+    return matches ? decodeURIComponent(matches[1]) : undefined;
+}
+
+export { removeUrlPathPrefix, getCookie };

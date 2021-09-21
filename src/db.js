@@ -6,6 +6,7 @@ const TypeError = 'DB_Error';
 class DB {
     constructor() {
         this.jsonDB = new JsonDB(new Config('./database/db.json', true, true, '/'));
+        console.log('\n\n   WE CALL constructor DB  \n\n')
     }
 
     get(path) {

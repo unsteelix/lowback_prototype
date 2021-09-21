@@ -3,10 +3,12 @@ GET http://localhost:3000/ HTTP/1.1
 ###
 
 GET http://localhost:3000/db/test3/eee/e2/2 HTTP/1.1
+Authorization: jwt token3232234
 
 ###
 
 GET http://localhost:3000/db/query/test2 HTTP/1.1
+Authorization: jwt token222222222222
 
 ###
 
@@ -36,3 +38,13 @@ content-type: application/json
 
 GET http://localhost:3000/db/delete/test3/eee/ddd HTTP/1.1
 content-type: application/json
+
+###   Auth
+
+GET http://localhost:3000/auth/site2/1234567890 HTTP/1.1
+content-type: application/json
+
+###
+
+GET http://localhost:3000/admin HTTP/1.1
+Authorization: jwt tokenMaster
