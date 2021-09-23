@@ -1,15 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>asdsadsad</title>
+	<title>Lowback</title>
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/lib/normalize.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
+  <link rel="stylesheet" type="text/css" href="css/auth.css">
 </head>
 <body>
-  <div id="links-block"></div>
 
-  <div class="login-form">
-    <input id="login-form-input" type="text" />
+  <div class="main-block">
+
+    <div class="links-block hidden">
+      <div class="one-link">
+        <a href="/admin">Admin panel</a>
+      </div>
+      <div class="one-link">
+        <a href="/docs">Docs</a>
+      </div>
+    </div>
+
+    <div class="login-block">
+      <input id="login-form-input" type="password" />
+    </div>
+
   </div>
 
   <script type="text/javascript" src="js/lib/jquery-3.6.0.min.js"></script>

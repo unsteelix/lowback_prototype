@@ -1,0 +1,60 @@
+.main-block {
+    border-left: 1px solid lightgray;
+    border-right: 1px solid lightgray;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.main-block-left {
+    border-right: 1px solid lightgray;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: stretch;
+    align-content: stretch;
+    box-sizing: border-box;
+}
+
+.main-block-right {
+
+}
+
+
+.block-search {
+    border-bottom: 1px solid lightgray;
+}
+
+.block-editing {
+    border: 0px solid blueviolet;
+    height: 96%;
+}
+
+#search-input {
+    width: 98%;
+    font-size: 2em;
+}
+
+#textarea-place {
+    height: 100%;
+}
+
+#textarea-input {
+    height: 100%;
+}
+
+.update-button{
+    background-color: ghostwhite;
+    color: gray;
+    cursor: pointer;
+    padding: 0.6em;
+    font-size: 1.3em;
+    text-align: center;
+    border: 1px solid gray;
+}
+
+.update-button:hover{
+    background-color: gainsboro;
+    color: ghostwhite;
+}

@@ -1,3 +1,10 @@
-body{
-    background-color: blueviolet;
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: #2d2d2d;
 }

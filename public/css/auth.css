@@ -1,0 +1,37 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    height: 100vh;
+}
+
+.main-block {
+    color: #2d2d2d;
+}
+
+#login-form-input {
+    font-size: 2em;
+    text-align: center;
+}
+
+.links-block {
+    font-size: 2em;
+}
+
+.one-link {
+    margin: 0.3em;
+}
+
+a {
+    transition: 0.3s;
+}
+
+a:hover {
+    color: #797979;
+    margin-left: 0.5em;
+}
+
+.hidden {
+    display: none;
+}

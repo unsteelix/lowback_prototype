@@ -1,32 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>JSON VIEW</title>
+	<title>Lowback</title>
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="css/lib/jsonview.bundle.css">
+  <link rel="stylesheet" type="text/css" href="css/lib/normalize.css">
+  <link rel="stylesheet" type="text/css" href="css/lib/jsonview.bundle.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+  <link rel="stylesheet" type="text/css" href="css/admin.css">
 </head>
 <body>
-  <div class="root"></div>
 
-  <script type="text/javascript" src="js/lib/jsonview.bundle.js"></script>
+  <div class="main-block">
+
+    <div class="main-block-left">
+
+      <div class="block-search">
+        <input type="text" id="search-input" />
+      </div>
+
+      <div class="block-editing">
+        <div id="textarea-place">
+          <textarea id="textarea-input" rows="10" cols="45" name="json-text"></textarea>
+        </div>
+      </div>
+
+      <div class="update-button">Update</div>
+
+    </div>
+
+    <div class="main-block-right">
+      <div class="root"></div>
+    </div>
+
+  </div>
+
+  <script type="text/javascript" src="js/lib/jquery-3.6.0.min.js"></script>
   <script type="text/javascript" src="js/lib/axios.min.js"></script>
-  <script type="text/javascript">
-    axios.get('/db/', {
-      headers: {
-        'Authorization': `jwt tokenMaster`
-      }
-    })
-    .then((res) => {
-      const data = res.data;
+  <script type="text/javascript" src="js/lib/jsonview.bundle.js"></script>
+  <script type="text/javascript" src="js/lib/js.cookie.min.js"></script>
+  <script type="text/javascript" src="js/lib/json-beautify.js"></script>
 
-      const tree = JsonView.createTree(data);
-      JsonView.render(tree, document.querySelector('.root'));
-      JsonView.expandChildren(tree);
-    })
-    .catch((error) => {
-      console.error(error)
-    })
 
-  </script>
+  <script type="text/javascript" src="js/main.js"></script>
+  <script type="text/javascript" src="js/admin.js"></script>
 </body>
 </html>

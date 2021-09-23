@@ -1,4 +1,3 @@
-import Cookies from 'js-cookie';
 import DB from '../db';
 import { removeUrlPathPrefix, getCookie } from '../utils';
 

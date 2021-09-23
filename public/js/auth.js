@@ -35,8 +35,8 @@ const getToketByPass = (pass) => {
  * Показ ссылок на разные страницы сервиса
  */
 const showLinksBlock = () => {
-    const block = '<div><a href="/admin">админка</a><a href="/docs">доки</a></div>'
-    $('#links-block').html(block)
+    $( ".links-block" ).removeClass( "hidden" )
+    $( ".login-block" ).addClass( "hidden" )
 }
 
 
