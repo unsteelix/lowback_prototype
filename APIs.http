@@ -1,4 +1,4 @@
-GET http://localhost:3000/ HTTP/1.1
+GET http://localhost:3000/
 
 ###
 
@@ -18,9 +18,10 @@ GET http://localhost:3000/db/reload HTTP/1.1
 
 POST http://localhost:3000/db/set/test3/eee/e2/2 HTTP/1.1
 content-type: application/json
+Authorization: jwt tokenMaster
 
 {
-    "22": "4222",
+    "22": "422244",
     "eee": 44
 }
 

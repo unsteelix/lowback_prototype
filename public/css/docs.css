@@ -1,0 +1,18 @@
+body {
+    width: 100%;
+    display: flex;
+    justify-content: center;    
+}
+
+.main-block {
+    border-left:  1px solid gainsboro;
+    border-right: 1px solid gainsboro;
+    padding: 1em;
+}
+
+code {
+    background-color: ghostwhite;
+    display: block;
+    border: 1px solid gainsboro;
+    padding: 1em;
+}
