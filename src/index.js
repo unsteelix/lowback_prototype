@@ -1,7 +1,10 @@
 import Fastify from 'fastify';
 import path from 'path';
+import {Telegraf} from 'telegraf';
+import telegrafPlugin from 'fastify-telegraf';
 import router from './router';
 import auth from './middleware/auth';
+import db from './db';
 
 /**
  * [GET]  [S] /db/site/...                               - запрос на получение данных
@@ -24,10 +27,67 @@ import auth from './middleware/auth';
 
 const PORT = 3000
 
+const BOT_TOKEN = '2029552408:AAGDRZEx0YXyT2j7tkISeSIEeysZKmKcLj8'
+const WEBHOOK_URL = 'https://lowback.ru/telega'
 
 const fastify = Fastify({
     logger: true
 })
+
+
+
+
+
+
+
+if (!WEBHOOK_URL) throw new Error('"WEBHOOK_URL" env var is required!')
+if (!BOT_TOKEN) throw new Error('"BOT_TOKEN" env var is required!')
+
+const bot = new Telegraf(BOT_TOKEN)
+
+const SECRET_PATH = `/telegraf/${bot.secretPathComponent()}`
+
+console.log('\n\n',SECRET_PATH,'\n\n')
+
+fastify.register(telegrafPlugin, { bot, path: SECRET_PATH })
+
+bot.on('text', (ctx) => {
+
+    const text = ctx.update.message.text;
+    const data = db.get('/pass')
+
+    const res = data.split('\n\n');
+    let found = '';
+
+    console.log('\n\n',text,'\n\n')
+
+
+    res.forEach(el => {
+        console.log('\n\n',el,'\n\n')
+
+        if(el.includes(text)){
+            console.log(444)
+            found = found + '\n\n' + el
+        }
+    });  
+    
+    found ? ctx.reply(found) : ctx.reply('Nothing')
+
+})
+
+bot.launch()
+/*
+bot.telegram.setWebhook(WEBHOOK_URL + SECRET_PATH).then(() => {
+  console.log('Webhook is set on', WEBHOOK_URL)
+})
+*/
+
+
+
+
+
+
+
 
 fastify.addHook('onRequest', auth);
 fastify.register(router);
@@ -35,8 +95,6 @@ fastify.register(router);
 fastify.register(require('fastify-static'), {
     root: path.join(__dirname, '../', 'public'),
 });
-
-console.log('\n\n',__dirname,'\n\n')
 
 
 
