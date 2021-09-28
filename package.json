@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "build": "babel src -d lib",
-    "watch": "nodemon --watch src --exec babel-node src/index.js",
+    "dev": "nodemon --watch src --exec babel-node src/index.js",
     "serve": "node lib/index.js"
   },
   "repository": "https://github.com/unsteelix/lowback.git",

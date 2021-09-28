@@ -31,7 +31,7 @@ const BOT_TOKEN = '2029552408:AAGDRZEx0YXyT2j7tkISeSIEeysZKmKcLj8'
 const WEBHOOK_URL = 'https://lowback.ru/telega'
 
 const fastify = Fastify({
-    logger: true
+    logger: false
 })
 
 
@@ -53,26 +53,47 @@ fastify.register(telegrafPlugin, { bot, path: SECRET_PATH })
 
 bot.on('text', (ctx) => {
 
-    const text = ctx.update.message.text;
-    const data = db.get('/pass')
+    // сообщение
+    const { message } = ctx.update;
+    
+    // пользователь
+    const user = ctx.update.message.from;
 
-    const res = data.split('\n\n');
-    let found = '';
+    // текст сообщения
+    const { text } = message;
 
-    console.log('\n\n',text,'\n\n')
+    // все данные и whitelist пользователей бота)
+    const { pass, botUserWhiteList } = db.get('/')
 
+    if (!botUserWhiteList.includes(user.id)) {
+        ctx.reply('Тебе сюда нельзя! Дружок пирожок')
+        return;
+    }
 
-    res.forEach(el => {
-        console.log('\n\n',el,'\n\n')
+    // для возврата всех данных
+    if (text.toLowerCase() === 'all') {
+        ctx.reply(pass);
+        return;
+    }
 
-        if(el.includes(text)){
-            console.log(444)
-            found = found + '\n\n' + el
+    // для возврата других данных из БД
+    if (text[0] === '/') {
+        ctx.reply(db.get(text));
+        return;
+    }
+
+    const splittedPass = pass.split('\n\n');
+    
+    let suitablePass = '';
+
+    splittedPass.forEach(el => {
+        if (el.toLowerCase().includes(text.toLowerCase())) {
+            suitablePass += `${el}\n\n`
         }
     });  
     
-    found ? ctx.reply(found) : ctx.reply('Nothing')
-
+    suitablePass ? ctx.reply(suitablePass) : ctx.reply('Nothing')
+    return;
 })
 
 bot.launch()
