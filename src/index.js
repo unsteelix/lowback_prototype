@@ -19,13 +19,15 @@ import db from './db';
  * [GET]  /                                              - основная страница со стенографической картикой и формой входа
  * [GET] [S] /admin                                      - админка
  * [GET] [S] /docs                                       - документация
+ * [GET]  /pass/dddddddddd                               - редактор паролей
+ * [GET]  /pass/wwwwwwwwww                               - редактор паролей
  * 
  * !!!!!!! узнать склько раз вызывается подключение к БД
  * !!!!!!! посмотреть структуру JWT и сделать генерируемые временные токены
  * 
  * */
 
-const PORT = 3000
+const PORT = 3200
 
 const BOT_TOKEN = '2029552408:AAGDRZEx0YXyT2j7tkISeSIEeysZKmKcLj8'
 const WEBHOOK_URL = 'https://lowback.ru/telega'
@@ -52,7 +54,7 @@ console.log('\n\n',SECRET_PATH,'\n\n')
 fastify.register(telegrafPlugin, { bot, path: SECRET_PATH })
 
 bot.on('text', (ctx) => {
-
+console.log(111111111111)
     // сообщение
     const { message } = ctx.update;
     

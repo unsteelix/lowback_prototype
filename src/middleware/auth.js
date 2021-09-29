@@ -14,23 +14,30 @@ const auth = (request, reply, done) => {
     // первая часть URL
     const partURL = urlWithoutSlash.split('/')[1];
 
-    // проверяем токен для всех запросов связанных с БД или админкой
-    if (partURL === 'db' || partURL === 'admin') {
+    /**
+     *  для всех запросов связанных с БД или админкой
+     *  проверяем наличие токена в заголовках
+     */
+    if (partURL === 'db' || partURL === 'admin' || partURL === 'docs') {
 
         let token = null;
 
-        // для токена в заголовке Authorization
+        /**
+         * для токенов в Authorization
+         */
         if (partURL === 'db') {
             const { authorization } = headers;
 
             if (!authorization) {
                 throw new Error('authorization token is missing')
             }
-    
+
             token = authorization.split(' ')[1];
 
-            // для токена в куках
-        } else if (partURL === 'admin') {
+        /**
+         * для токенов в куках
+         */
+        } else if (partURL === 'admin' || partURL === 'docs') {
 
             const { cookie } = headers;
 
@@ -45,14 +52,29 @@ const auth = (request, reply, done) => {
             }
         }
 
-        const dataPath = `/tokenRights/${token}`;
+        if(!token){
+            throw new Error('Token must be not void')
+        }
 
         let availablePaths = []
 
-        try {
-            availablePaths = DB.get(dataPath);
-        } catch (e) {
-            throw new Error(`token [${token}] not found`);
+        /**
+         * разрешаем для генерируемых токенов запросы в ветку с паролями /pass
+         */
+        if (url.includes(`/db/set/pass/${token}`) || url.includes(`/db/pass/${token}`)) {
+
+            availablePaths.push(`/pass/${token}`)
+
+        } else { // для обычных токенов
+
+            const dataPath = `/tokenRights/${token}`;
+
+            try {
+                availablePaths = DB.get(dataPath);
+            } catch (e) {
+                throw new Error(`token [${token}] not found`);
+            }
+
         }
 
         let isAvailable = false;

@@ -1,22 +1,22 @@
-GET http://localhost:3000/
+GET http://localhost:3200/
 
 ###
 
-GET http://localhost:3000/db/test3/eee/e2/2 HTTP/1.1
-Authorization: jwt token3232234
+GET http://localhost:3200/db/pass/wwwwwwwwwwwwrrr
+Authorization: jwt tokenMaster
 
 ###
 
-GET http://localhost:3000/db/query/test2 HTTP/1.1
+GET http://localhost:3000/db/query/test2
 Authorization: jwt token222222222222
 
 ###
 
-GET http://localhost:3000/db/reload HTTP/1.1
+GET http://localhost:3000/db/reload
 
 ###
 
-POST http://localhost:3000/db/set/test3/eee/e2/2 HTTP/1.1
+POST http://localhost:3000/db/set/test3/eee/e2/2
 content-type: application/json
 Authorization: jwt tokenMaster
 
@@ -27,7 +27,7 @@ Authorization: jwt tokenMaster
 
 ###
 
-POST http://localhost:3000/db/merge/test3/eee HTTP/1.1
+POST http://localhost:3000/db/merge/test3/eee
 content-type: application/json
 
 {
@@ -37,15 +37,15 @@ content-type: application/json
 
 ###
 
-GET http://localhost:3000/db/delete/test3/eee/ddd HTTP/1.1
+GET http://localhost:3000/db/delete/test3/eee/ddd
 content-type: application/json
 
 ###   Auth
 
-GET http://localhost:3000/auth/site2/1234567890 HTTP/1.1
+GET http://localhost:3000/auth/site2/1234567890
 content-type: application/json
 
 ###
 
-GET http://localhost:3000/admin HTTP/1.1
+GET http://localhost:3000/admin
 Authorization: jwt tokenMaster
