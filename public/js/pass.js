@@ -1,4 +1,4 @@
-$('#textarea-input').autoResize();
+//$('#textarea-input').autoResize();
 
 const updateButton = $('.update-button')[0]
 
@@ -60,7 +60,8 @@ init()
             JSON.parse(jsonText)
 
             const res = await setDataRequest(`/pass/${token}`, jsonText)
-            $('.block-editing').html(`<textarea id="textarea-input" rows="30" cols="70" name="json-text">${res}</textarea>`)
+            $('.block-editing').html(`<textarea id="textarea-input">${res}</textarea>`)
+            //$('#textarea-input').autoResize();
 
         } catch(e) {
             console.log(e)

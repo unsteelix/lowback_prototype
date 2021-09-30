@@ -32,11 +32,34 @@ const getToketByPass = (pass) => {
 
 
 /**
+ * 
+ * @returns список ссылок на стр с паролями
+ */
+const getPassLinks = () => {
+    const token = Cookies.get('token');
+    return axios.get(`/db/pass`, {
+        headers: {
+            'Authorization': `jwt ${token}`
+        }
+    })
+    .then((res) => res.data)
+}
+
+/**
  * Показ ссылок на разные страницы сервиса
  */
-const showLinksBlock = () => {
+const showLinksBlock = async () => {
     $( ".links-block" ).removeClass( "hidden" )
     $( ".login-block" ).addClass( "hidden" )
+
+    const links = await getPassLinks()
+    console.log(links)
+
+    for(link in links){
+        console.log(link)
+        const val = links[link]
+        $( ".pass-links" ).append(`<div class="one-link"><a href="/pass/${link}">/pass/${link}</a></div>`)
+    }
 }
 
 
