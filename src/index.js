@@ -44,8 +44,9 @@ fastify.register(require('fastify-static'), {
 
 const start = async () => {
     try {
-        await fastify.listen(PORT)
-        console.log(`Server is now listening on port ${PORT}`)
+        await fastify.listen(PORT, '0.0.0.0', (err, address) => {
+            console.log(`\n\nServer listening on ${address}\n\n`)
+        })
     } catch (err) {
         fastify.log.error(err)
         process.exit(1)

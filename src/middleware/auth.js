@@ -91,7 +91,7 @@ const auth = (request, reply, done) => {
             throw new Error(`token [${token}] dont have permission for path [${cleanUrl}], but have for [${availablePaths}]`)
         }
 
-        console.log('\n\n', 'Token: [', token, ']\n\n', 'AvailablePaths: ', availablePaths, '\n\n', isAvailable, '\n\n');
+        console.log('\n\n', 'Token: [', token, ']\n\n', 'AvailablePaths: ', availablePaths);
     }
 
     done()
