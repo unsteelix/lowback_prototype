@@ -46,6 +46,7 @@ const start = async () => {
     try {
         await fastify.listen(PORT, '0.0.0.0', (err, address) => {
             console.log(`\n\nServer listening on ${address}\n\n`)
+            console.log(__dirname, '\n\n')
         })
     } catch (err) {
         fastify.log.error(err)

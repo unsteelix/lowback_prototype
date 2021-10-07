@@ -73,7 +73,7 @@ bot.on('text', (ctx) => {
     return;
 })
 
-bot.launch()
+//bot.launch()
 
 
 const SECRET_PATH = `/telegraf/${bot.secretPathComponent()}`
