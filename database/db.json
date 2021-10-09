@@ -1,98 +1,16 @@
 {
     "botUserAvailablePaths": {
-        "343243243": [
-            "papa",
-            "hhhhh"
-        ],
         "980065682": [
-            "papa",
-            "43",
-            "kirill",
-            "kirill2"
+            "kirill"
+        ],
+        "10101010110": [
+            "papa"
         ]
     },
     "botUserWhiteList": [
         980065682
     ],
-    "pass": {
-        "43": "some garbage\ngarbage 1\n2 garbage motocycle\n3 garbage non stop fiction\n\ngmail mail\nunsteelixx@gamil.com\nlord89223\n\ncamera store\nleica\ngmail",
-        "wwwwwwwwwwww": "ewrwertrty4335\n\nfdg\nfd\ng\nfd\ng\ndfgfdgfdgfdg\n\nsdfdsf\n\n\n\ndsfsdf  fdgfdgfdg",
-        "wwwwwwwwwwwwrrr": "www",
-        "hhhhh": "werdsf\n\n\nsdfsdf\n\nsdfsdfdsfsd\n\n\nhhh",
-        "papa": "papa passwords\nmy new pass\n1234007\nхлеб\n\nсписок покупок\nговно\nмолоко\nхлеб\n\nдял сайта ыфвфыв\nыфвыфв\nфывфыв\n\n\nдля сайта 2\nыфвыфв\nфывыфв",
-        "kirill": "test datas from kirill account\n\nyandex mail\nunsteelix@yadex.ry\n12345446\n\ngma\nunsteelix@gamil.com\nlordddd\n\nnew logo\nhttps://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9Ke10jLA20XUHu3kpmjKOytkcKcHrgHcxPw&usqp=CAU\n\ncool pics\nhttps://w.wallhaven.cc/full/pk/wallhaven-pkw6y3.jpg\nhttps://w.wallhaven.cc/full/28/wallhaven-2839em.jpg\nhttps://w.wallhaven.cc/full/x8/wallhaven-x8po7l.jpg\nhttps://w.wallhaven.cc/full/9m/wallhaven-9mrr5k.jpg\nhttps://w.wallhaven.cc/full/28/wallhaven-283ol9.jpg\n\n\ngosuslugi\n89127459411\npass",
-        "jjjj": "sfsfddddss\n\nsd\nf\nsd\nf\nsdfsdf\n\nsdfsfsdsd",
-        "kirill2": "sme test data"
-    },
-    "anime": [
-        "https://yummyanime.club/catalog/item/sud-ba-velikaya-kampaniya-kamelot-stranstvie",
-        "https://yummyanime.club/catalog/item/povsednevnaya-zhizn-bessmertnogo-korolya",
-        "https://yummyanime.club/img/posters/1607788074.jpg",
-        "https://yummyanime.club/img/posters/1583008913.jpg",
-        "https://yummyanime.club/img/posters/1583008913.jpg\nhttps://yummyanime.club/img/posters/1583008913.jpg \n\n https://yummyanime.club/img/posters/1583008913.jpg"
-    ],
-    "test": {
-        "ttwws": "3334f11www144444441",
-        "new": "hhh",
-        "newwwwww222222": "somevaluedsfdsfdsfsdfsdf"
-    },
-    "test1": "super test",
-    "test2": {
-        "my": {
-            "3": 25,
-            "24": 52,
-            "110": 53,
-            "r1r": 532
-        }
-    },
-    "sdsdsd": "dfdsfdsfdsfss",
-    "token": {
-        "unsteelix": {
-            "12345678": "someunsteelixtoken"
-        }
-    },
-    "test3": {
-        "eee": {
-            "e2": [
-                {
-                    "22": "4222",
-                    "eee": 44
-                },
-                {
-                    "22": "4222",
-                    "eee": 44
-                },
-                {
-                    "22": "422244",
-                    "eee": 44
-                }
-            ],
-            "e22332": "4222",
-            "ddd": "tessss",
-            "ggg": 454
-        }
-    },
-    "eee": {
-        "22": "4222",
-        "eee": {
-            "eee": {
-                "e2": [
-                    {
-                        "22": "4222",
-                        "eee": 44
-                    },
-                    {
-                        "22": "4222",
-                        "eee": 44
-                    },
-                    324
-                ],
-                "e22332": "4222",
-                "ddd": "tessss",
-                "ggg": 454
-            }
-        }
-    },
+    "pass": {},
     "auth": {
         "lowback": {
             "12345678": "tokenMaster"
@@ -137,8 +55,45 @@
             "/"
         ]
     },
-    "pass2": {
-        "eeeeeeee": "dsfdsf\n\n\n\nwerwerwerewr",
-        "dddddddddd": "yt"
+    "anime": [
+        "https://yummyanime.club/catalog/item/sud-ba-velikaya-kampaniya-kamelot-stranstvie",
+        "https://yummyanime.club/catalog/item/povsednevnaya-zhizn-bessmertnogo-korolya",
+        "https://yummyanime.club/img/posters/1607788074.jpg",
+        "https://yummyanime.club/img/posters/1583008913.jpg",
+        "https://yummyanime.club/img/posters/1583008913.jpg\nhttps://yummyanime.club/img/posters/1583008913.jpg \n\n https://yummyanime.club/img/posters/1583008913.jpg"
+    ],
+    "test": {
+        "user": "3334f11www144444441",
+        "new": "hhh",
+        "newwwwww222222": "somevaluedsfdsfdsfsdfsdf"
+    },
+    "test2": {
+        "my": {
+            "3": 25,
+            "24": 52,
+            "110": 53,
+            "r1r": 532
+        }
+    },
+    "test3": {
+        "eee": {
+            "e2": [
+                {
+                    "22": "4222",
+                    "eee": 44
+                },
+                {
+                    "22": "4222",
+                    "eee": 44
+                },
+                {
+                    "22": "422244",
+                    "eee": 44
+                }
+            ],
+            "e22332": "4222",
+            "ddd": "tessss",
+            "ggg": 454
+        }
     }
 }
